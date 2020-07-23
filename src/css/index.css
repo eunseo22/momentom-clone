@@ -6,3 +6,7 @@
 .showing{
     display: block;
 }
+
+button{
+    padding: 5px;
+}
