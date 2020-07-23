@@ -4,20 +4,23 @@ const toDoForm = document.querySelector(".js-toDoForm"),
 
 const TODOS_LS = 'toDos';
 
-function saveToDo(text){
-    localStorage.setItem(TODOS_LS, text);
-}
+const li = document.createElement("li"),
+    delBtn = document.createElement("button");
 
 function paintToDo(text){
-    console.log(text);
+    toDoInput.value = "";
 }
 
-function handleSubmit(event){
+function toDo_handleSubmit(event){
     event.preventDefault();
     const currentValue = toDoInput.value;
     paintToDo(currentValue);
-    saveToDo(currentValue);
-    toDoInput.value = "";
+    toDoInput.innertext = "x";
+    const span = document.createElement("span");
+    span.innerText = currentValue;
+    li.appendChild(span);
+    li.appendChild(delBtn);
+    toDoList.appendChild(li);
 }
 
 function loadToDos(){
@@ -28,6 +31,6 @@ function loadToDos(){
 }
 function init(){
     loadToDos();
-    toDoForm.addEventListener("submit", handleSubmit);
+    toDoForm.addEventListener("submit", toDo_handleSubmit);
 }
 init();
